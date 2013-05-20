@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deployment", "Deployment\Deployment.csproj", "{E1B2C0E9-A5F7-4D5C-AFBC-A51A6A52A8B7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D4CD7F12-4EC7-4A23-B995-66EB05FF4651} = {D4CD7F12-4EC7-4A23-B995-66EB05FF4651}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApplicationConfiguration", "ApplicationConfiguration", "{84233DD6-3959-4857-B71C-F5E71C8D4985}"
+	ProjectSection(SolutionItems) = preProject
+		Application.config = Application.config
+		CubeStatus.snk = CubeStatus.snk
+		FxCop.targets = FxCop.targets
+		FxCopConsoleOutput.xsl = FxCopConsoleOutput.xsl
+		FxCopDictionary.xml = FxCopDictionary.xml
+		Settings.FxCop = Settings.FxCop
+		Settings.spruleset = Settings.spruleset
+		Settings.StyleCop = Settings.StyleCop
+		SharePointConfiguration.xml = SharePointConfiguration.xml
+		SPSF.targets = SPSF.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Components", "Components\Components.csproj", "{D4CD7F12-4EC7-4A23-B995-66EB05FF4651}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1B2C0E9-A5F7-4D5C-AFBC-A51A6A52A8B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1B2C0E9-A5F7-4D5C-AFBC-A51A6A52A8B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1B2C0E9-A5F7-4D5C-AFBC-A51A6A52A8B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1B2C0E9-A5F7-4D5C-AFBC-A51A6A52A8B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4CD7F12-4EC7-4A23-B995-66EB05FF4651}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4CD7F12-4EC7-4A23-B995-66EB05FF4651}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4CD7F12-4EC7-4A23-B995-66EB05FF4651}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D4CD7F12-4EC7-4A23-B995-66EB05FF4651}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4CD7F12-4EC7-4A23-B995-66EB05FF4651}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4CD7F12-4EC7-4A23-B995-66EB05FF4651}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
