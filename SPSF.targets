@@ -4,7 +4,7 @@
   <!-- This file contains targets which are used by projects in the solution to create wsp solution files -->
   <!-- Author: Torsten Mandelkow -->
   <!-- Author: Matthias Einig -->
-  <!-- SPSF Version 4.1.2.2904 -->
+  <!-- SPSF Version 4.1.3.2705 -->
 
   <!-- Directory for the solution is different in DesktopBuild and TeamBuild -->
   <PropertyGroup>
@@ -17,16 +17,16 @@
     <!-- Deactivate StyleCop -->
     <StyleCopEnabled>True</StyleCopEnabled>
   <!-- Deactivate SPCop-->
-    <SPCAFEnabled>True</SPCAFEnabled>
+    <SPCopEnabled>True</SPCopEnabled>
     <!-- Deactivate FXCop-->
     <FxCopEnabled>True</FxCopEnabled>
     <!-- Deactivate SPDisposeChecker Code Analysis-->
     <SPDisposeCheckerEnabled>True</SPDisposeCheckerEnabled>
     <!-- Deactivate VSTS Code Analysis-->
     <RunCodeAnalysis>false</RunCodeAnalysis>
-	<!-- Set parameters for packaging -->
-	<IsPackaging>true</IsPackaging>
-	<IsDebugging>false</IsDebugging>
+    <!-- Set parameters for packaging -->
+    <IsPackaging>true</IsPackaging>
+    <IsDebugging>false</IsDebugging>
   </PropertyGroup>
 
   <!-- Deactivate Quality Check for other build configurations -->
@@ -34,27 +34,27 @@
     <!-- Deactivate StyleCop -->
     <StyleCopEnabled>false</StyleCopEnabled>
     <!-- Deactivate SPCop-->
-    <SPCAFEnabled>false</SPCAFEnabled>
+    <SPCopEnabled>false</SPCopEnabled>
     <!-- Deactivate FXCop-->
     <FxCopEnabled>false</FxCopEnabled>
     <!-- Deactivate SPDisposeChecker Code Analysis-->
     <SPDisposeCheckerEnabled>false</SPDisposeCheckerEnabled>
     <!-- Deactivate VSTS Code Analysis-->
     <RunCodeAnalysis>false</RunCodeAnalysis>
-	<!-- Set parameters for packaging -->
-	<IsPackaging>true</IsPackaging>
-	<IsDebugging>true</IsDebugging>
+    <!-- Set parameters for packaging -->
+    <IsPackaging>true</IsPackaging>
+    <IsDebugging>true</IsDebugging>
   </PropertyGroup>
 
   <!-- Set Quality Check settings -->
   <PropertyGroup >
-	<CodeAnalysisResultsFolder>$(IntermediateOutputPath)CodeAnalysisResults</CodeAnalysisResultsFolder>
+	<CodeAnalysisResultsFolder>$(MSBuildProjectDirectory)\$(OutputPath)CodeAnalysisResults</CodeAnalysisResultsFolder>
 	<!-- StyleCop -->
 	<StyleCopOverrideSettingsFile>$(BaseDir)Settings.StyleCop</StyleCopOverrideSettingsFile>
 	<StyleCopOutputFile>$(CodeAnalysisResultsFolder)\StyleCopViolations.xml</StyleCopOutputFile>
-	<!-- SPCAF -->
-	<SPCAFSettingsFile>$(BaseDir)Settings.spruleset</SPCAFSettingsFile>
-	<SPCAFOutputFile>$(CodeAnalysisResultsFolder)\SPCAFViolations.xml</SPCAFOutputFile>
+	<!-- SPCAF/SPCop -->
+	<SPCopSettingsFile>$(BaseDir)Settings.spruleset</SPCopSettingsFile>
+	<SPCopOutputFile>$(CodeAnalysisResultsFolder)\SPCopViolations.xml</SPCopOutputFile>
 	<!-- FxCop-->
 	<FxCopSettingsFile>$(BaseDir)Settings.FxCop</FxCopSettingsFile>
 	<FxCopXSLFile>$(BaseDir)FXCopConsoleOutput.xsl</FxCopXSLFile>
@@ -72,17 +72,13 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(LayoutPath)' != ''">
-    <AfterBuildDependsOn>$(AfterBuildDependsOn);FixPackageManifest;CreatePackage</AfterBuildDependsOn>
+    <AfterBuildDependsOn>$(AfterBuildDependsOn);FixPackageManifest;CreateDirectories;CreatePackage</AfterBuildDependsOn>
   </PropertyGroup>
   
   <!-- Import Quality Check Targets if existing and if DesktopBuild-->
-  <Import Condition="'$(BuildingInsideVisualStudio)'=='true' AND Exists('$(MSBuildExtensionsPath)\Microsoft\StyleCop\v4.3\Microsoft.StyleCop.Targets')" Project="$(MSBuildExtensionsPath)\Microsoft\StyleCop\v4.3\Microsoft.StyleCop.Targets" />
-  <Import Condition="'$(BuildingInsideVisualStudio)'=='true' AND Exists('$(MSBuildExtensionsPath)\Microsoft\StyleCop\v4.4\Microsoft.StyleCop.Targets')" Project="$(MSBuildExtensionsPath)\Microsoft\StyleCop\v4.4\Microsoft.StyleCop.Targets" />
-  <Import Condition="'$(BuildingInsideVisualStudio)'=='true' AND Exists('$(MSBuildExtensionsPath)\Microsoft\StyleCop\v4.5\Microsoft.StyleCop.Targets')" Project="$(MSBuildExtensionsPath)\Microsoft\StyleCop\v4.5\Microsoft.StyleCop.Targets" />
-  <Import Condition="'$(BuildingInsideVisualStudio)'=='true' AND Exists('$(MSBuildExtensionsPath)\Microsoft\StyleCop\v4.6\Microsoft.StyleCop.Targets')" Project="$(MSBuildExtensionsPath)\Microsoft\StyleCop\v4.6\Microsoft.StyleCop.Targets" />
-  <Import Condition="'$(BuildingInsideVisualStudio)'=='true' AND Exists('$(MSBuildExtensionsPath)\Microsoft\StyleCop\v4.7\Microsoft.StyleCop.Targets')" Project="$(MSBuildExtensionsPath)\Microsoft\StyleCop\v4.7\Microsoft.StyleCop.Targets" />
-  <Import Condition="'$(BuildingInsideVisualStudio)'=='true' AND Exists('$(MSBuildExtensionsPath)\Microsoft\StyleCop\v4.8\Microsoft.StyleCop.Targets')" Project="$(MSBuildExtensionsPath)\Microsoft\StyleCop\v4.8\Microsoft.StyleCop.Targets" />
-  <Import Condition="'$(BuildingInsideVisualStudio)'=='true' AND Exists('$(MSBuildExtensionsPath)\SPCAF\SPCAF.targets')" Project="$(MSBuildExtensionsPath)\SPCAF\SPCAF.targets" />
+  <Import Condition="'$(BuildingInsideVisualStudio)'=='true' AND Exists('$(MSBuildExtensionsPath)\StyleCop\v4.6\StyleCop.Targets')" Project="$(MSBuildExtensionsPath)\StyleCop\v4.6\StyleCop.Targets" />
+  <Import Condition="'$(BuildingInsideVisualStudio)'=='true' AND Exists('$(MSBuildExtensionsPath)\StyleCop\v4.7\StyleCop.Targets')" Project="$(MSBuildExtensionsPath)\StyleCop\v4.7\StyleCop.Targets" />
+  <Import Condition="'$(BuildingInsideVisualStudio)'=='true' AND Exists('$(MSBuildExtensionsPath)\StyleCop\v4.8\StyleCop.Targets')" Project="$(MSBuildExtensionsPath)\StyleCop\v4.8\StyleCop.Targets" />
   <Import Condition="'$(BuildingInsideVisualStudio)'=='true' AND Exists('$(MSBuildExtensionsPath)\SPCAF\SPCop.targets')" Project="$(MSBuildExtensionsPath)\SPCAF\SPCop.targets" />
   <Import Condition="'$(BuildingInsideVisualStudio)'=='true' AND Exists('$(MSBuildExtensionsPath)\SPCopCE\SPCopCE.targets')" Project="$(MSBuildExtensionsPath)\SPCopCE\SPCopCE.targets" />
   <Import Condition="'$(BuildingInsideVisualStudio)'=='true' AND Exists('$(BaseDir)FxCop.targets')" Project="$(BaseDir)FxCop.targets" />
@@ -129,4 +125,7 @@
     <FixPackageManifestTask Manifest="$(LayoutPath)%(EnumeratedFiles.Package)\manifest.xml" />
   </Target>
 
+  <Target Name="CreateDirectories">
+        <MakeDir Directories="$(CodeAnalysisResultsFolder)"/>
+  </Target>
 </Project>

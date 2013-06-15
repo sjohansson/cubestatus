@@ -17,6 +17,7 @@
     <SandboxedSolution>False</SandboxedSolution>
     <AssemblyDeploymentTarget>GlobalAssemblyCache</AssemblyDeploymentTarget>
     <ProjectGuid>{D4CD7F12-4EC7-4A23-B995-66EB05FF4651}</ProjectGuid>
+    <IncludeAssemblyInPackage>True</IncludeAssemblyInPackage>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,6 +39,14 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AnalysisServices, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\Microsoft SQL Server\110\SDK\Assemblies\Microsoft.AnalysisServices.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.BusinessData, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.SecureStoreService, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SharePoint.Client, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SharePoint.Portal, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -56,17 +65,104 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecureStoreUtils.cs" />
+    <Compile Include="WebParts\CubeStatus\CubeStatus.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\CubeStatus.Components\icons\book_green.png" />
+    <Content Include="Images\CubeStatus.Components\icons\book_grey.png" />
+    <Content Include="Images\CubeStatus.Components\icons\book_red.png" />
+    <Content Include="Images\CubeStatus.Components\icons\book_yellow.png" />
+    <Content Include="Images\CubeStatus.Components\icons\bug_green.png" />
+    <Content Include="Images\CubeStatus.Components\icons\bug_grey.png" />
+    <Content Include="Images\CubeStatus.Components\icons\bug_red.png" />
+    <Content Include="Images\CubeStatus.Components\icons\bug_yellow.png" />
+    <Content Include="Images\CubeStatus.Components\icons\circle_green.png" />
+    <Content Include="Images\CubeStatus.Components\icons\circle_grey.png" />
+    <Content Include="Images\CubeStatus.Components\icons\circle_red.png" />
+    <Content Include="Images\CubeStatus.Components\icons\circle_yellow.png" />
+    <Content Include="Images\CubeStatus.Components\icons\cone_green.png" />
+    <Content Include="Images\CubeStatus.Components\icons\cone_grey.png" />
+    <Content Include="Images\CubeStatus.Components\icons\cone_red.png" />
+    <Content Include="Images\CubeStatus.Components\icons\cone_yellow.png" />
+    <Content Include="Images\CubeStatus.Components\icons\cube_green.png" />
+    <Content Include="Images\CubeStatus.Components\icons\cube_grey.png" />
+    <Content Include="Images\CubeStatus.Components\icons\cube_red.png" />
+    <Content Include="Images\CubeStatus.Components\icons\cube_yellow.png" />
+    <Content Include="Images\CubeStatus.Components\icons\flag_green.png" />
+    <Content Include="Images\CubeStatus.Components\icons\flag_grey.png" />
+    <Content Include="Images\CubeStatus.Components\icons\flag_red.png" />
+    <Content Include="Images\CubeStatus.Components\icons\flag_yellow.png" />
+    <Content Include="Images\CubeStatus.Components\icons\flask_green.png" />
+    <Content Include="Images\CubeStatus.Components\icons\flask_grey.png" />
+    <Content Include="Images\CubeStatus.Components\icons\flask_red.png" />
+    <Content Include="Images\CubeStatus.Components\icons\flask_yellow.png" />
+    <Content Include="Images\CubeStatus.Components\icons\pill_green.png" />
+    <Content Include="Images\CubeStatus.Components\icons\pill_grey.png" />
+    <Content Include="Images\CubeStatus.Components\icons\pill_red.png" />
+    <Content Include="Images\CubeStatus.Components\icons\pill_yellow.png" />
+    <Content Include="Images\CubeStatus.Components\icons\pin_green.png" />
+    <Content Include="Images\CubeStatus.Components\icons\pin_grey.png" />
+    <Content Include="Images\CubeStatus.Components\icons\pin_red.png" />
+    <Content Include="Images\CubeStatus.Components\icons\pin_yellow.png" />
+    <Content Include="Images\CubeStatus.Components\icons\puzzle_green.png" />
+    <Content Include="Images\CubeStatus.Components\icons\puzzle_grey.png" />
+    <Content Include="Images\CubeStatus.Components\icons\puzzle_red.png" />
+    <Content Include="Images\CubeStatus.Components\icons\puzzle_yellow.png" />
+    <Content Include="Images\CubeStatus.Components\icons\shield_green.png" />
+    <Content Include="Images\CubeStatus.Components\icons\shield_grey.png" />
+    <Content Include="Images\CubeStatus.Components\icons\shield_red.png" />
+    <Content Include="Images\CubeStatus.Components\icons\shield_yellow.png" />
+    <Content Include="Images\CubeStatus.Components\icons\star_green.png" />
+    <Content Include="Images\CubeStatus.Components\icons\star_grey.png" />
+    <Content Include="Images\CubeStatus.Components\icons\star_red.png" />
+    <Content Include="Images\CubeStatus.Components\icons\star_yellow.png" />
+    <Content Include="Images\CubeStatus.Components\icons\torso_green.png" />
+    <Content Include="Images\CubeStatus.Components\icons\torso_grey.png" />
+    <Content Include="Images\CubeStatus.Components\icons\torso_red.png" />
+    <Content Include="Images\CubeStatus.Components\icons\torso_yellow.png" />
+    <Content Include="Images\CubeStatus.Components\icons\triangle_green.png" />
+    <Content Include="Images\CubeStatus.Components\icons\triangle_grey.png" />
+    <Content Include="Images\CubeStatus.Components\icons\triangle_red.png" />
+    <Content Include="Images\CubeStatus.Components\icons\triangle_yellow.png" />
+    <Content Include="WebParts\CubeStatus\WebPartIcon_CubeStatus.gif" />
+    <None Include="Features\CubeStatus_CubeStatus\CubeStatus_CubeStatus.feature">
+      <FeatureId>{93346b6f-cbe5-4218-b8df-e5a2b863fce7}</FeatureId>
+    </None>
+    <None Include="Images\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{b0fc168f-6de8-4bac-a164-71fd42b57c95}</SharePointProjectItemId>
+    </None>
     <None Include="Package\Package.package">
       <PackageId>{45B2E846-66DB-45DE-A33D-3687C506BC5B}</PackageId>
     </None>
     <None Include="Package\Package.Template.xml">
       <DependentUpon>Package.package</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\Resources\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{cad9956b-c320-4d3f-b185-d4a8b257b76f}</SharePointProjectItemId>
+    </None>
+    <None Include="Template\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{ddf6273c-e8ae-4331-9ae5-cfe4328f972c}</SharePointProjectItemId>
+    </None>
+    <Content Include="WebParts\CubeStatus\CubeStatus.webpart" />
+    <None Include="WebParts\CubeStatus\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{23c582fd-5dac-4f19-b2ba-41ea4393515b}</SharePointProjectItemId>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Features\" />
+    <Content Include="Features\CubeStatus_CubeStatus\CubeStatus_CubeStatus.Template.xml">
+      <DependentUpon>CubeStatus_CubeStatus.feature</DependentUpon>
+    </Content>
+    <Content Include="Template\Images\CubeStatus\FeatureIcon_CubeStatus.gif" />
+    <Content Include="WebParts\CubeStatus\Elements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Features\CubeStatus_CubeStatus\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Resources\CubeStatus.Components.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<webParts>
+	<webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
+		<metaData>
+			<type name="CubeStatus.Components.CubeStatus, CubeStatus.Components, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0c78dcfc45b347c3" />
+			<importErrorMessage>Cannot import Cube Status Web Part.</importErrorMessage>
+		</metaData>
+		<data>
+			<properties>
+				<property name="Title" type="string">$Resources:CubeStatus.Components,CubeStatus_WebPartTitle;</property>
+				<property name="Description" type="string">$Resources:CubeStatus.Components,CubeStatus_WebPartDescription;</property>
+				<property name="CatalogIconImageUrl" type="string">/_layouts/15/images/CubeStatus/WebPartIcon_CubeStatus.gif</property>
+				<property name="TitleIconImageUrl" type="string">/_layouts/15/images/CubeStatus/WebPartIcon_CubeStatus.gif</property>
+			</properties>
+		</data>
+	</webPart>
+</webParts>

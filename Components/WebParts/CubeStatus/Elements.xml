@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Code initially generated with SharePoint Software Factory, Version 4.1 , spsf.codeplex.com -->
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+	<Module
+		Name="CubeStatus"
+		List="113"
+		Url="_catalogs/wp">
+		<File
+			Path="CubeStatus\CubeStatus.webpart"
+			Url="CubeStatus.webpart"
+			Type="GhostableInLibrary">
+			<Property
+				Name="Group"
+				Value="$Resources:CubeStatus.Components,CubeStatus_WebPartGroup;" />
+			<Property
+				Name="QuickAddGroups"
+				Value="$Resources:CubeStatus.Components,CubeStatus_WebPartQuickAddGroup;" />
+		</File>
+	</Module>
+</Elements>
