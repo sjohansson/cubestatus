@@ -298,15 +298,19 @@ namespace CubeStatus.Components
             {
                 Server olapServer = new Server();
                 olapServer.Connect(connStr);
+                var foundDatabase = false;
 
                 foreach (Database olapDatabase in olapServer.Databases)
                 {
                     if (olapDatabase.Name.ToString() == olapdb)
                     {
+                        foundDatabase = true;
+                        var foundCube = false;
                         foreach (Cube olapCubex in olapDatabase.Cubes)
                         {
                             if (olapCubex.Name == olapCube)
                             {
+                                foundCube = true;
                                 this.Controls.Add(new LiteralControl("<table style='width: 600px'><tr><td rowspan='5' style='width: 50px'>"));
 
                                 /*
@@ -405,12 +409,17 @@ namespace CubeStatus.Components
 
                                 this.Controls.Add(new LiteralControl("</tr></table>"));
                             }
-                            else
-                            {
-                                this.Controls.Add(new LiteralControl("Cube not found..."));
-                            }
+
+                        }
+                        if (!foundCube)
+                        {
+                            this.Controls.Add(new LiteralControl("Cube " + ssasCubeName + " not found..."));
                         }
                     }
+                }
+                if (!foundDatabase)
+                {
+                    this.Controls.Add(new LiteralControl("Database " + ssasDatabaseName + " not found..."));
                 }
             }
             catch (Exception ex)
@@ -437,11 +446,11 @@ namespace CubeStatus.Components
 
                             //Try to find user name and password from SSS, assume group mode and standard key names. If you use different key names etc, either update here or implement as parameters/web part properties in webpart
 
-                            string sssUN="";
-                            string sssPW="";
+                            string sssUN = "";
+                            string sssPW = "";
 
-                            string userDomain="";
-                            string userName="";
+                            string userDomain = "";
+                            string userName = "";
 
                             try
                             {
@@ -453,7 +462,7 @@ namespace CubeStatus.Components
                                 if (index >= 0)
                                 {
                                     userDomain = sssUN.Substring(0, index);
-                                    userName = sssUN.Substring(index+1, sssUN.Length-index-1);
+                                    userName = sssUN.Substring(index + 1, sssUN.Length - index - 1);
                                 }
                             }
                             catch (Exception ex)
