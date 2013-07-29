@@ -212,7 +212,7 @@ namespace CubeStatus.Components
         #region Impersonation Code
 
         /*
-         * Code for impersionation of user from:
+         * Code for impersonation of user from:
          * http://blog.softartisans.com/2011/07/14/solving-the-double-hop-issue-using-secure-store/
          */
 
